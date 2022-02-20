@@ -8,11 +8,13 @@ player.setCurrentTime(timeToResume);
 
 player.on('timeupdate', throttle(getTime,1000));
   
-  function getTime(event) {
+function getTime(event) {
+  if (event.percent === 1) {
+    localStorage.removeItem("videoplayer-current-time")
+   return 
+  }
     localStorage.setItem("videoplayer-current-time", event.seconds)
-    console.log(event.seconds);
+    console.log(event);
 };
 
-// player.getVideoTitle().then(function(title) {
-//     console.log('title:', title);
-// });
+

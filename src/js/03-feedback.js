@@ -23,8 +23,9 @@ function updateForm() {
     return
   };
   savedData = JSON.parse(localStorage.getItem("feedback-form-state"));
-  emailRef.value = savedData[emailRef.name];
-  messageRef.value = savedData[messageRef.name];
+  emailRef.value = savedData[emailRef.name] || "";
+  messageRef.value = savedData[messageRef.name] || "";
+  console.dir(messageRef);
 };
 formRef.addEventListener('submit', onSubmit);
 function onSubmit(event) {
@@ -34,3 +35,4 @@ function onSubmit(event) {
   console.log(JSON.parse(localStorage.getItem("feedback-form-state")));
   formRef.reset();
 };
+
